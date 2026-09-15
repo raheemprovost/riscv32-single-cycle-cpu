@@ -1,0 +1,4 @@
+# Simulation build artifacts
+cpu_sim
+*.vcd
+*.vvp
