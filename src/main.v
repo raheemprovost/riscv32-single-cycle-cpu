@@ -1,6 +1,6 @@
 module main (
     input cpu_clk,
-    input cpu_reset   // <--- REMOVED COMMA HERE
+    input cpu_reset   
 );
     // --- INTERNAL WIRING ---
     wire [31:0] next_pc;
@@ -39,7 +39,7 @@ module main (
 
     instrmem my_mem (
         .pc_out(pc_to_instr),
-        .instruction(full_instr) // <--- REMOVED COMMA HERE
+        .instruction(full_instr) 
     );
 
     regfile my_regs (
@@ -51,7 +51,7 @@ module main (
         .rs2(full_instr[24:20]),
         .write_data(alu_output),
         .read_data1(reg_data1),
-        .read_data2(reg_data2)   // <--- REMOVED COMMA HERE
+        .read_data2(reg_data2)   
     );
 
     control my_brain (
@@ -64,7 +64,7 @@ module main (
         .op(alu_op),
         .reg_write(reg_bit),
         .branch(wire_branch),
-        .alu_src(alu_src_bit)    // <--- REMOVED COMMA HERE
+        .alu_src(alu_src_bit)    
     );
 
     alu my_math (
@@ -72,12 +72,12 @@ module main (
         .B(alu_input2),
         .op(alu_op),
         .C(alu_output),
-        .zeroflag(zero_bit)      // <--- REMOVED COMMA HERE
+        .zeroflag(zero_bit)      
     );
 
     imgen my_numbers (
         .instruction(full_instr),
-        .imm_out(imm_val)        // <--- REMOVED COMMA HERE
+        .imm_out(imm_val)        
     );
 
     assign alu_input2 = (alu_src_bit == 1'b1) ? imm_val : reg_data2;
